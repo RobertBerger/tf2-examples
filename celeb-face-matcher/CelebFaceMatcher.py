@@ -17,6 +17,7 @@ from pathlib import Path
 from time import time
 import concurrent.futures
 import sys
+import pathlib
 
 print('Tensorflowversion: ' + tf.__version__)
 print('You work here: ', Path.cwd())
@@ -62,7 +63,8 @@ mitte = np.empty(shape=[0, 0])
 mittleres_Gesicht_X = ()
 
 if Runningsystem == 'PC':
-    cascaderpath = 'Cascader'
+    #cascaderpath = 'Cascader'
+    cascaderpath = '/usr/share/opencv4/lbpcascades'
     #modelpath = 'models/'
     modelpath = '/usr/share/celeb-face-matcher-models/models/tflite/'
     #embeddingpath = 'Data/Embeddings/'
@@ -87,11 +89,20 @@ print('model_path = ' + model_path)
 # Load face cascader
 #-----------------------------------------------------------------------------
 
+# --> check if file exists
+file = pathlib.Path(str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface_improved.xml'))
+print('face_cascade: ' + file)
+if file.exists ():
+    print('>> exists <<'))
+else:
+    print('>> does not exist <<'))
+# <-- check if file exists
+
 #face_cascade = cv2.CascadeClassifier(str(Path.cwd() / cascaderpath / 'haarcascade_frontalface_alt.xml'))
 #face_cascade = cv2.CascadeClassifier(str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface.xml'))
 face_cascade = cv2.CascadeClassifier(
     str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface_improved.xml'))
-print('cascader loaded  ...')
+print('cascader maybe loaded  ...')
 
 # Load Model tflite
 #-----------------------------------------------------------------------------
