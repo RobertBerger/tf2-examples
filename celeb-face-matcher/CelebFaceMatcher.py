@@ -86,6 +86,15 @@ model_path = str(Path.cwd() / modelpath / model)
 
 print('model_path = ' + model_path)
 
+# --> check if file exists
+print('model_path: ' + str(Path.cwd() / modelpath / model))
+file = pathlib.Path(str(Path.cwd() / modelpath / model))
+if file.exists ():
+    print('model >> exists <<')
+else:
+    print('model >> does not exist <<')
+# <-- check if file exists
+
 # Load face cascader
 #-----------------------------------------------------------------------------
 
@@ -93,16 +102,16 @@ print('model_path = ' + model_path)
 print('face_cascade: ' + str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface_improved.xml'))
 file = pathlib.Path(str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface_improved.xml'))
 if file.exists ():
-    print('>> exists <<')
+    print('face_cascade >> exists <<')
 else:
-    print('>> does not exist <<')
+    print('face_cascade >> does not exist <<')
 # <-- check if file exists
 
 #face_cascade = cv2.CascadeClassifier(str(Path.cwd() / cascaderpath / 'haarcascade_frontalface_alt.xml'))
 #face_cascade = cv2.CascadeClassifier(str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface.xml'))
 face_cascade = cv2.CascadeClassifier(
     str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface_improved.xml'))
-print('cascader maybe loaded  ...')
+print('cascader maybe? loaded  ...')
 
 # Load Model tflite
 #-----------------------------------------------------------------------------
