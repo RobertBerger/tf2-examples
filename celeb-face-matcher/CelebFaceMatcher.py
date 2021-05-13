@@ -90,12 +90,12 @@ print('model_path = ' + model_path)
 #-----------------------------------------------------------------------------
 
 # --> check if file exists
+print('face_cascade: ' + str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface_improved.xml'))
 file = pathlib.Path(str(Path.cwd() / cascaderpath / 'lbpcascade_frontalface_improved.xml'))
-print('face_cascade: ' + file)
 if file.exists ():
-    print('>> exists <<'))
+    print('>> exists <<')
 else:
-    print('>> does not exist <<'))
+    print('>> does not exist <<')
 # <-- check if file exists
 
 #face_cascade = cv2.CascadeClassifier(str(Path.cwd() / cascaderpath / 'haarcascade_frontalface_alt.xml'))
